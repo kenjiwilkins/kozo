@@ -69,6 +69,44 @@ app.use('/react-app/*', serveStatic({
   }
 }))
 
+app.get('/svelte-app', async (c) => {
+  const file = path.join(__dirname, '../dist/svelte-app/index.html')
+  const content = await fs.promises
+    .readFile(file, 'utf-8')
+  c.header('Content-Type', 'text/html')
+  return c.html(content)
+})
+
+app.use('/svelte-app/*', serveStatic({
+  root: '../dist',
+  getContent: async (filePath, c) => {
+    try {
+      const content = await fs.promises.readFile(path.join(__dirname, filePath), 'utf-8');
+      const ext = path.extname(filePath);
+      let contentType = 'text/plain';
+
+      if (ext === '.js') {
+        contentType = 'application/javascript';
+      } else if (ext === '.css') {
+        contentType = 'text/css';
+      } else if (ext === '.html') {
+        contentType = 'text/html';
+      } else if (ext === '.svg') {
+        contentType = 'image/svg+xml';
+      } else {
+        console.log('Unknown file type:', ext);
+        contentType = 'text/plain';
+      }
+
+      c.header('Content-Type', contentType);
+      return new Response(content);
+    } catch (e) {
+      console.error(e);
+      return null;
+    }
+  }
+}))
+
 app.get('/vue-app', async (c) => {
   const file = path.join(__dirname, '../dist/vue-app/index.html')
   const content = await fs.promises
