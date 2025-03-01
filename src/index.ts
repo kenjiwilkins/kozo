@@ -31,6 +31,10 @@ app.get('/', (c) => {
   return c.html(index);
 })
 
+app.notFound((c) => {
+  return c.redirect('/?error=404')
+})
+
 app.get('/react-app', async (c) => {
   const file = path.join(__dirname, '../dist/react-app/index.html')
   const content = await fs.promises
