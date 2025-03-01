@@ -1,0 +1,19 @@
+{
+  "name": "kozo",
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "dev:vue": "nx run vue-app:serve"
+  },
+  "dependencies": {
+    "@hono/node-server": "^1.13.8",
+    "express": "^4.21.2",
+    "hono": "^4.7.2"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.17",
+    "nx": "20.4.6",
+    "tsx": "^4.7.1"
+  },
+  "nx": {}
+}

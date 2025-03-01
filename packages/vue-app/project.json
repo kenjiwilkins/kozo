@@ -1,0 +1,12 @@
+{
+  "name": "vue-app",
+  "root": "packages/vue-app",
+  "targets": {
+    "build": {
+      "executor": "@nx/vite:build"
+    },
+    "serve": {
+      "executor": "@nx/vite:dev-server"
+    }
+  }
+}
