@@ -47,6 +47,7 @@ app.use('/react-app/*', serveStatic({
   root: '../dist',
   getContent: async (filePath, c) => {
     try {
+      console.log("dirnmae", __dirname, filePath)
       const content = await fs.promises.readFile(path.join(__dirname, filePath), 'utf-8');
       const ext = path.extname(filePath);
       let contentType = 'text/plain';
@@ -68,7 +69,7 @@ app.use('/react-app/*', serveStatic({
       return new Response(content);
     } catch (e) {
       console.error(e);
-      return null;
+      return c.notFound();
     }
   }
 }))
@@ -106,7 +107,7 @@ app.use('/svelte-app/*', serveStatic({
       return new Response(content);
     } catch (e) {
       console.error(e);
-      return null;
+      return c.notFound();
     }
   }
 }))
@@ -144,7 +145,7 @@ app.use('/vue-app/*', serveStatic({
       return new Response(content);
     } catch (e) {
       console.error(e);
-      return null;
+      return c.notFound();
     }
   }
 }))

@@ -3,7 +3,7 @@
   "type": "module",
   "scripts": {
     "dev": "tsx watch src/index.ts",
-    "dev:vue": "nx run vue-app:serve"
+    "build": "tsx build src/index.ts"
   },
   "dependencies": {
     "@hono/node-server": "^1.13.8",
