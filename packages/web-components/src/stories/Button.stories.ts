@@ -1,9 +1,5 @@
-import { fn } from '@storybook/test';
-
 import type { Meta, StoryObj } from '@storybook/web-components';
 
-// import type { ButtonProps } from './Button';
-// import { Button } from './Button';
 import type { ButtonProps } from '../components/button/button';
 import { Button } from '../components/button/button';
 
@@ -21,6 +17,9 @@ const meta = {
       control: { type: 'select' },
       options: ['primary', 'secondary', 'tertiary', 'outline', 'hover', 'text'],
     },
+    disabled: {
+      control: { type: 'boolean' },
+    }
   },
 } satisfies Meta<ButtonProps>;
 
@@ -42,4 +41,10 @@ export const Size: Story = {
   },
 };
 
+export const disabled: Story = {
+  args: {
+    label: 'Button',
+    disabled: true,
+  }
+}
 
