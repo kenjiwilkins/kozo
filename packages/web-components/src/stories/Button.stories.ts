@@ -2,8 +2,10 @@ import { fn } from '@storybook/test';
 
 import type { Meta, StoryObj } from '@storybook/web-components';
 
-import type { ButtonProps } from './Button';
-import { Button } from './Button';
+// import type { ButtonProps } from './Button';
+// import { Button } from './Button';
+import type { ButtonProps } from '../components/button/button';
+import { Button } from '../components/button/button';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const meta = {
@@ -11,42 +13,33 @@ const meta = {
   tags: ['autodocs'],
   render: (args) => Button(args),
   argTypes: {
-    backgroundColor: { control: 'color' },
     size: {
       control: { type: 'select' },
-      options: ['small', 'medium', 'large'],
+      options: ['xs', 'sm', 'md', 'lg', 'xl'],
+    },
+    variant: {
+      control: { type: 'select' },
+      options: ['primary', 'secondary', 'tertiary', 'outline', 'hover', 'text'],
     },
   },
-  args: { onClick: fn() },
 } satisfies Meta<ButtonProps>;
 
 export default meta;
 type Story = StoryObj<ButtonProps>;
 
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
-export const Primary: Story = {
+export const Variant: Story = {
   args: {
-    primary: true,
+    label: 'Button',
+    variant: 'primary',
+  },
+};
+
+export const Size: Story = {
+  args: {
+    size: 'lg',
     label: 'Button',
   },
 };
 
-export const Secondary: Story = {
-  args: {
-    label: 'Button',
-  },
-};
 
-export const Large: Story = {
-  args: {
-    size: 'large',
-    label: 'Button',
-  },
-};
-
-export const Small: Story = {
-  args: {
-    size: 'small',
-    label: 'Button',
-  },
-};
