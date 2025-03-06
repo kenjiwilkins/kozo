@@ -2,6 +2,7 @@
   import svelteLogo from './assets/svelte.svg'
   import viteLogo from '/vite.svg'
   import Counter from './lib/Counter.svelte'
+  import Button from './components/buttons/Button.svelte';
 </script>
 
 <main>
@@ -17,6 +18,9 @@
 
   <div class="card">
     <Counter />
+    <Button size="lg" variant="secondary" disabled>
+      Button
+    </Button>
   </div>
 
   <p>
